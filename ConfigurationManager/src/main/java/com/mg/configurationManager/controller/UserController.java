@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mg.configurationManager.Service.JwtService;
-import com.mg.configurationManager.Service.UserService;
+import com.mg.configurationManager.Service.impl.JwtService;
+import com.mg.configurationManager.Service.impl.UserService;
 import com.mg.configurationManager.entity.User;
 import com.mg.configurationManager.model.AuthorizationTokenResponse;
 import com.mg.configurationManager.model.UserDto;

@@ -11,27 +11,27 @@ insert into action (id,name) values (2,'Email to Wish list User');
 insert into action (id,name) values (3,'Email to Admin');
 
 
-insert into system_parameters (id,name,data_type) values (1,'UserName','String');
-insert into system_parameters (id,name,data_type) values (2,'dateTime','DateTime');
-insert into system_parameters (id,name,data_type) values (3,'previousRole','String');
-insert into system_parameters (id,name,data_type) values (4,'newRole','String');
-insert into system_parameters (id,name,data_type) values (5,'roleUpdate','String');
-insert into system_parameters (id,name,data_type) values (6,'UserProfileActivity','String');
-insert into system_parameters (id,name,data_type) values (7,'paymentResult','String');
-insert into system_parameters (id,name,data_type) values (8,'paymentId','String');
-insert into system_parameters (id,name,data_type) values (9,'formName','String');
-insert into system_parameters (id,name,data_type) values (10,'formResult','String');
-insert into system_parameters (id,name,data_type) values (11,'oldPrice','Double');
-insert into system_parameters (id,name,data_type) values (12,'newPrice','Double');
-insert into system_parameters (id,name,data_type) values (13,'productName','String');
-insert into system_parameters (id,name,data_type) values (14,'oldInventoryCount','Double');
-insert into system_parameters (id,name,data_type) values (15,'newInventoryCount','Double');
-insert into system_parameters (id,name,data_type) values (16,'priceUpdate','String');
-insert into system_parameters (id,name,data_type) values (17,'inventoryUpdate','String');
-insert into system_parameters (id,name,data_type) values (18,'UserType','String');
-insert into system_parameters (id,name,data_type) values (19,'paymentAmount','Double');
-insert into system_parameters (id,name,data_type) values (20,'revenuAmount','Double');
-insert into system_parameters (id,name,data_type) values (21,'orderCount','Double');
+insert into system_parameters (id,name,data_type) values (1,'UserName','STRING');
+insert into system_parameters (id,name,data_type) values (2,'DATETIME','DATETIME');
+insert into system_parameters (id,name,data_type) values (3,'previousRole','STRING');
+insert into system_parameters (id,name,data_type) values (4,'newRole','STRING');
+insert into system_parameters (id,name,data_type) values (5,'roleUpdate','STRING');
+insert into system_parameters (id,name,data_type) values (6,'UserProfileActivity','STRING');
+insert into system_parameters (id,name,data_type) values (7,'paymentResult','STRING');
+insert into system_parameters (id,name,data_type) values (8,'paymentId','STRING');
+insert into system_parameters (id,name,data_type) values (9,'formName','STRING');
+insert into system_parameters (id,name,data_type) values (10,'formResult','STRING');
+insert into system_parameters (id,name,data_type) values (11,'oldPrice','DOUBLE');
+insert into system_parameters (id,name,data_type) values (12,'newPrice','DOUBLE');
+insert into system_parameters (id,name,data_type) values (13,'productName','STRING');
+insert into system_parameters (id,name,data_type) values (14,'oldInventoryCount','DOUBLE');
+insert into system_parameters (id,name,data_type) values (15,'newInventoryCount','DOUBLE');
+insert into system_parameters (id,name,data_type) values (16,'priceUpdate','STRING');
+insert into system_parameters (id,name,data_type) values (17,'inventoryUpdate','STRING');
+insert into system_parameters (id,name,data_type) values (18,'UserType','STRING');
+insert into system_parameters (id,name,data_type) values (19,'paymentAmount','DOUBLE');
+insert into system_parameters (id,name,data_type) values (20,'revenuAmount','DOUBLE');
+insert into system_parameters (id,name,data_type) values (21,'orderCount','DOUBLE');
 
 
 insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(1,3,'EQUAL','admin',null,'STATIC');
@@ -55,70 +55,70 @@ insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(17,20,
 insert into default_email_template (id,name,subject,body) values(1,'Role Changed from Admin','Role Changed from Admin','Dear ${UserName}, Your role has been changed from ${previousRole} to ${newRole}. Thankyou.');
 
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(1,'Role Changed from Admin','RoleChange','1',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(1,'Role Changed from Admin','ROLE_CHANGE','1',1);
 insert into available_rule_actions(available_rule_id,actions_id) values(1,1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(1,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(2,'Role Changed to Admin','RoleChange','2',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(2,'Role Changed to Admin','ROLE_CHANGE','2',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(2,2);
 insert into available_rule_actions(available_rule_id,actions_id) values(2,1);
 
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(3,'Role Upgrade','RoleChange','3',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(3,'Role Upgrade','ROLE_CHANGE','3',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(3,3);
 insert into available_rule_actions(available_rule_id,actions_id) values(3,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(4,'Role Down Grade','RoleChange','4',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(4,'Role Down Grade','ROLE_CHANGE','4',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(4,4);
 insert into available_rule_actions(available_rule_id,actions_id) values(4,1);
 
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(5,'New User Added','UserAccountActivity','5',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(5,'New User Added','USER_ACCOUNT_ACTIVITY','5',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(5,5);
 insert into available_rule_actions(available_rule_id,actions_id) values(5,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(6,'New User Activated','UserAccountActivity','6',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(6,'New User Activated','USER_ACCOUNT_ACTIVITY','6',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(6,6);
 insert into available_rule_actions(available_rule_id,actions_id) values(6,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(7,'User Modified Profile field','UserAccountActivity','7',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(7,'User Modified Profile field','USER_ACCOUNT_ACTIVITY','7',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(7,7);
 insert into available_rule_actions(available_rule_id,actions_id) values(7,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(8,'User Note Attached','UserAccountActivity','8&&9',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(8,'User Note Attached','USER_ACCOUNT_ACTIVITY','8&&9',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(8,8);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(8,9);
 insert into available_rule_actions(available_rule_id,actions_id) values(8,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(9,'Payment Complete','Payment','10',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(9,'Payment Complete','PAYMENT','10',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(9,10);
 insert into available_rule_actions(available_rule_id,actions_id) values(9,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(10,'Payment Failed','Payment','11',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(10,'Payment Failed','PAYMENT','11',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(10,11);
 insert into available_rule_actions(available_rule_id,actions_id) values(10,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(11,'Form Submitted','FormAction','12',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(11,'Form Submitted','FORM_ACTION','12',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(11,12);
 insert into available_rule_actions(available_rule_id,actions_id) values(11,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(12,'Password Recovered','UserAccountActivity','13',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(12,'Password Recovered','USER_ACCOUNT_ACTIVITY','13',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(12,13);
 insert into available_rule_actions(available_rule_id,actions_id) values(12,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(13,'Price reduction on Wishlisted Product','PriceUpdate','14',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(13,'Price reduction on Wishlisted Product','PRICE_UPDATE','14',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(13,14);
 insert into available_rule_actions(available_rule_id,actions_id) values(13,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(14,'Wishlisted Product only x left','InventoryUpdate','16',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(14,'Wishlisted Product only x left','INVETORY_CHANGE','16',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(14,15);
 insert into available_rule_actions(available_rule_id,actions_id) values(14,2);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(15,'Email Users above x purchase (revenue)','Payment','17',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(15,'Email Users above x purchase (revenue)','PAYMENT','17',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(15,17);
 insert into available_rule_actions(available_rule_id,actions_id) values(15,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(16,'Email Users above x order count','Payment','16',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(16,'Email Users above x order count','PAYMENT','16',1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(16,16);
 insert into available_rule_actions(available_rule_id,actions_id) values(16,1);
 

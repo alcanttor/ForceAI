@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
@@ -21,7 +22,7 @@ public class AvailableRule {
 	@Enumerated(EnumType.STRING)
 	private Event event;
 	private String ruleExpression;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	private List<FixRule> fixRules;
 	@ManyToMany
 	private List<Action> actions;
@@ -69,5 +70,12 @@ public class AvailableRule {
 	public void setDefaultEmailTemplate(DefaultEmailTemplate defaultEmailTemplate) {
 		this.defaultEmailTemplate = defaultEmailTemplate;
 	}
+	@Override
+	public String toString() {
+		return "AvailableRule [id=" + id + ", name=" + name + ", event=" + event + ", ruleExpression=" + ruleExpression
+				+ ", fixRules=" + fixRules + ", actions=" + actions + ", defaultEmailTemplate=" + defaultEmailTemplate
+				+ "]";
+	}
+	
 	
 }

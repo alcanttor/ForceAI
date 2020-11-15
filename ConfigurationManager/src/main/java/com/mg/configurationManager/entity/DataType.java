@@ -2,5 +2,5 @@ package com.mg.configurationManager.entity;
 
 public enum DataType {
 
-	DOUBLE,INTEGER,STRING;
+	DOUBLE,INTEGER,STRING,DATETIME;
 }
