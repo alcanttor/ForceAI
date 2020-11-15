@@ -123,4 +123,4 @@ insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(16,
 insert into available_rule_actions(available_rule_id,actions_id) values(16,1);
 
 
-
+insert into site (id,connector,name,user_id) values (1,'WORDPRESS','ABC.com',1);

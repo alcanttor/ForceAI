@@ -68,6 +68,11 @@ public class Rule {
 	public void setSystemPameters(List<SystemParameters> systemPameters) {
 		this.systemPameters = systemPameters;
 	}
+	@Override
+	public String toString() {
+		return "Rule [id=" + id + ", parameter=" + parameter + ", operation=" + operation + ", min=" + min + ", max="
+				+ max + ", ruleType=" + ruleType + ", systemPameters=" + systemPameters + "]";
+	}
 	
 	
 }

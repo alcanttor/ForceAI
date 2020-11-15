@@ -1,11 +1,14 @@
 package com.mg.configurationManager.entity;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -21,6 +24,8 @@ public class Site {
 	private Connector connector;
 	@OneToOne
 	private SiteToken siteToken;
+	@OneToMany(mappedBy = "site")
+	private List<SiteRule> siteRules;
 	public Integer getId() {
 		return id;
 	}
@@ -50,6 +55,12 @@ public class Site {
 	}
 	public void setSiteToken(SiteToken siteToken) {
 		this.siteToken = siteToken;
+	}
+	public List<SiteRule> getSiteRules() {
+		return siteRules;
+	}
+	public void setSiteRules(List<SiteRule> siteRules) {
+		this.siteRules = siteRules;
 	}
 	
 	

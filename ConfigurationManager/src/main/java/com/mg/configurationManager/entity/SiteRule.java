@@ -7,6 +7,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -29,6 +30,8 @@ public class SiteRule {
 	@OneToMany
 	private List<Action> actions;
 	private String ruleExpression;
+	@ManyToOne
+	private Site site;
 	@OneToOne
 	private AvailableRule availableRule;
 	@OneToOne
@@ -94,6 +97,19 @@ public class SiteRule {
 	}
 	public void setDefaultEmailTemplate(DefaultEmailTemplate defaultEmailTemplate) {
 		this.defaultEmailTemplate = defaultEmailTemplate;
+	}
+	public Site getSite() {
+		return site;
+	}
+	public void setSite(Site site) {
+		this.site = site;
+	}
+	@Override
+	public String toString() {
+		return "SiteRule [id=" + id + ", name=" + name + ", description=" + description + ", rules=" + rules
+				+ ", event=" + event + ", actions=" + actions + ", ruleExpression=" + ruleExpression + ", site=" + site
+				+ ", availableRule=" + availableRule + ", UserEmailTemplate=" + UserEmailTemplate
+				+ ", defaultEmailTemplate=" + defaultEmailTemplate + "]";
 	}
 	
 	

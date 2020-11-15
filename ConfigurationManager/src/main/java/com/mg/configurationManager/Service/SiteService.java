@@ -3,6 +3,7 @@ package com.mg.configurationManager.Service;
 import java.util.List;
 
 import com.mg.configurationManager.model.SiteDto;
+import com.mg.configurationManager.model.SiteTokenDto;
 
 public interface SiteService {
 
@@ -12,4 +13,6 @@ public interface SiteService {
 	public SiteDto getSitesById(Integer siteId);
 	public SiteDto getSitesBySiteName(String siteName);
 	public void deleteSiteByName(String siteName);
+	//public SiteTokenDto generaSiteToken();
+	//public SiteTokenDto reGeneraSiteToken();
 }
