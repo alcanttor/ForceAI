@@ -28,6 +28,8 @@ public class AvailableRule {
 	private List<Action> actions;
 	@OneToOne
 	private DefaultEmailTemplate defaultEmailTemplate;
+	@Enumerated(EnumType.STRING)
+	private Connector connector;
 	public Integer getId() {
 		return id;
 	}
@@ -70,10 +72,17 @@ public class AvailableRule {
 	public void setDefaultEmailTemplate(DefaultEmailTemplate defaultEmailTemplate) {
 		this.defaultEmailTemplate = defaultEmailTemplate;
 	}
+	
+	public Connector getConnector() {
+		return connector;
+	}
+	public void setConnector(Connector connector) {
+		this.connector = connector;
+	}
 	@Override
 	public String toString() {
 		return "AvailableRule [id=" + id + ", name=" + name + ", event=" + event + ", ruleExpression=" + ruleExpression
-				+ ", fixRules=" + fixRules + ", actions=" + actions + ", defaultEmailTemplate=" + defaultEmailTemplate
+				+ ", connector=" + connector +", fixRules=" + fixRules + ", actions=" + actions + ", defaultEmailTemplate=" + defaultEmailTemplate
 				+ "]";
 	}
 	

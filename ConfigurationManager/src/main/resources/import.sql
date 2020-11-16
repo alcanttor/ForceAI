@@ -55,70 +55,70 @@ insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(17,20,
 insert into default_email_template (id,name,subject,body) values(1,'Role Changed from Admin','Role Changed from Admin','Dear ${UserName}, Your role has been changed from ${previousRole} to ${newRole}. Thankyou.');
 
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(1,'Role Changed from Admin','ROLE_CHANGE','1',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(1,'Role Changed from Admin','ROLE_CHANGE','1',1,'WORDPRESS');
 insert into available_rule_actions(available_rule_id,actions_id) values(1,1);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(1,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(2,'Role Changed to Admin','ROLE_CHANGE','2',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(2,'Role Changed to Admin','ROLE_CHANGE','2',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(2,2);
 insert into available_rule_actions(available_rule_id,actions_id) values(2,1);
 
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(3,'Role Upgrade','ROLE_CHANGE','3',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(3,'Role Upgrade','ROLE_CHANGE','3',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(3,3);
 insert into available_rule_actions(available_rule_id,actions_id) values(3,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(4,'Role Down Grade','ROLE_CHANGE','4',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(4,'Role Down Grade','ROLE_CHANGE','4',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(4,4);
 insert into available_rule_actions(available_rule_id,actions_id) values(4,1);
 
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(5,'New User Added','USER_ACCOUNT_ACTIVITY','5',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(5,'New User Added','USER_ACCOUNT_ACTIVITY','5',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(5,5);
 insert into available_rule_actions(available_rule_id,actions_id) values(5,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(6,'New User Activated','USER_ACCOUNT_ACTIVITY','6',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(6,'New User Activated','USER_ACCOUNT_ACTIVITY','6',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(6,6);
 insert into available_rule_actions(available_rule_id,actions_id) values(6,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(7,'User Modified Profile field','USER_ACCOUNT_ACTIVITY','7',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(7,'User Modified Profile field','USER_ACCOUNT_ACTIVITY','7',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(7,7);
 insert into available_rule_actions(available_rule_id,actions_id) values(7,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(8,'User Note Attached','USER_ACCOUNT_ACTIVITY','8&&9',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(8,'User Note Attached','USER_ACCOUNT_ACTIVITY','8&&9',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(8,8);
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(8,9);
 insert into available_rule_actions(available_rule_id,actions_id) values(8,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(9,'Payment Complete','PAYMENT','10',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(9,'Payment Complete','PAYMENT','10',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(9,10);
 insert into available_rule_actions(available_rule_id,actions_id) values(9,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(10,'Payment Failed','PAYMENT','11',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(10,'Payment Failed','PAYMENT','11',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(10,11);
 insert into available_rule_actions(available_rule_id,actions_id) values(10,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(11,'Form Submitted','FORM_ACTION','12',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(11,'Form Submitted','FORM_ACTION','12',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(11,12);
 insert into available_rule_actions(available_rule_id,actions_id) values(11,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(12,'Password Recovered','USER_ACCOUNT_ACTIVITY','13',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(12,'Password Recovered','USER_ACCOUNT_ACTIVITY','13',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(12,13);
 insert into available_rule_actions(available_rule_id,actions_id) values(12,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(13,'Price reduction on Wishlisted Product','PRICE_UPDATE','14',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(13,'Price reduction on Wishlisted Product','PRICE_UPDATE','14',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(13,14);
 insert into available_rule_actions(available_rule_id,actions_id) values(13,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(14,'Wishlisted Product only x left','INVETORY_CHANGE','16',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(14,'Wishlisted Product only x left','INVETORY_CHANGE','16',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(14,15);
 insert into available_rule_actions(available_rule_id,actions_id) values(14,2);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(15,'Email Users above x purchase (revenue)','PAYMENT','17',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(15,'Email Users above x purchase (revenue)','PAYMENT','17',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(15,17);
 insert into available_rule_actions(available_rule_id,actions_id) values(15,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id) values(16,'Email Users above x order count','PAYMENT','16',1);
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(16,'Email Users above x order count','PAYMENT','16',1,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(16,16);
 insert into available_rule_actions(available_rule_id,actions_id) values(16,1);
 

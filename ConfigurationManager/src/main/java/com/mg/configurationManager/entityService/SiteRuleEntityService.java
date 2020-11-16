@@ -73,6 +73,7 @@ public class SiteRuleEntityService {
 		}
 		siteRule.setRuleExpression(expressionTemplate);
 		siteRule.setDefaultEmailTemplate(availableRule.getDefaultEmailTemplate());
+		//enable trigger on plugin
 		return siteRuleRepository.save(siteRule);
 	}
 

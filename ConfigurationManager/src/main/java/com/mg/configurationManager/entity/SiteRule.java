@@ -37,7 +37,7 @@ public class SiteRule {
 	@OneToOne
 	private UserEmailTemplate UserEmailTemplate;
 	@OneToOne
-	private DefaultEmailTemplate defaultEmailTemplate;
+	private DefaultEmailTemplate defaultEmailTemplate; // this may not required. can fetch from available rule
 	public Integer getId() {
 		return id;
 	}

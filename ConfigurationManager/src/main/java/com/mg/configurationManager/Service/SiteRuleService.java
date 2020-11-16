@@ -10,5 +10,5 @@ public interface SiteRuleService {
 	public SiteRuleDto addRule(CreateSiteRuleDtoInput siteRuleDto);
 	public void deleteSiteRulebysiteRuleId(Integer siteRuleId);
 	public List<SiteRuleDto> getRules(Integer siteId);
-	
+	public SiteRuleDto updateRule(CreateSiteRuleDtoInput siteRuleDto); // update only name and description
 }

@@ -13,6 +13,7 @@ public interface SiteService {
 	public SiteDto getSitesById(Integer siteId);
 	public SiteDto getSitesBySiteName(String siteName);
 	public void deleteSiteByName(String siteName);
+	public SiteDto updateSiteById(SiteDto siteDto);
 	//public SiteTokenDto generaSiteToken();
 	//public SiteTokenDto reGeneraSiteToken();
 }

@@ -28,11 +28,8 @@ public class SiteRuleServiceImpl  implements SiteRuleService{
 	@Override
 	public SiteRuleDto addRule(CreateSiteRuleDtoInput siteRuleDto) {
 		SiteRule siteRule = new SiteRule();
-		logger.info("received............................................ : "+siteRuleDto);
 		modelMapper.map(siteRuleDto,siteRule);
-		logger.info("mapped received : "+siteRule);
 		SiteRule savedSiteRule = siteRuleEntityService.addRule(siteRule);
-		logger.info("mapped received : "+savedSiteRule);
 		modelMapper.map(savedSiteRule,siteRuleDto);
 		return null;
 	}
@@ -51,6 +48,12 @@ public class SiteRuleServiceImpl  implements SiteRuleService{
 
 	@Override
 	public SiteRuleDto addRule(SiteRuleDto siteRuleDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public SiteRuleDto updateRule(CreateSiteRuleDtoInput siteRuleDto) {
 		// TODO Auto-generated method stub
 		return null;
 	}

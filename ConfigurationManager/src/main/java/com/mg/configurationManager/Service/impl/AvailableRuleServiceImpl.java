@@ -15,7 +15,6 @@ import com.mg.configurationManager.Service.AvailableRuleService;
 import com.mg.configurationManager.entity.AvailableRule;
 import com.mg.configurationManager.entity.Connector;
 import com.mg.configurationManager.entityService.AvailableRuleEntityService;
-import com.mg.configurationManager.exceptions.NotImplementedException;
 import com.mg.configurationManager.model.AvailableRuleDto;
 
 @Service
@@ -38,7 +37,11 @@ public class AvailableRuleServiceImpl implements AvailableRuleService{
 
 	@Override
 	public List<AvailableRuleDto> getAllAvailableRulesByConnetors(Connector connector) {
-		throw new NotImplementedException();
+		List<AvailableRule> availableRules = availableRuleEntityService.getAllAvailableRulesByConnetors(connector);
+		Type listavailableRules = new TypeToken<List<AvailableRuleDto>>() {}.getType();
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+		List<AvailableRuleDto> allRules = modelMapper.map(availableRules,listavailableRules);
+		return allRules;
 	}
 
 }

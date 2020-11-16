@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.mg.configurationManager.entity.AvailableRule;
 import com.mg.configurationManager.entity.Connector;
-import com.mg.configurationManager.exceptions.NotImplementedException;
 import com.mg.configurationManager.repository.AvailableRuleRepository;
 
 @Service
@@ -22,7 +21,7 @@ public class AvailableRuleEntityService {
 	}
 
 	public List<AvailableRule> getAllAvailableRulesByConnetors(Connector connector) {
-		throw new NotImplementedException();
+		return availableRuleRepository.findByConnector(connector);
 	}
 
 	public Optional<AvailableRule> getAvailableRuleById(Integer id)

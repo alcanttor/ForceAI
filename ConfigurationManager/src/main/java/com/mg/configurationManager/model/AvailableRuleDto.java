@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import com.mg.configurationManager.entity.Connector;
 import com.mg.configurationManager.entity.Event;
 
 @Component
@@ -16,6 +17,7 @@ public class AvailableRuleDto {
 	private List<FixRuleDto> fixRulesDto;
 	private List<ActionDto> actionsDto;
 	private DefaultEmailTemplateDto defaultEmailTemplateDto;
+	private Connector connector;
 	public Integer getId() {
 		return id;
 	}
@@ -57,6 +59,12 @@ public class AvailableRuleDto {
 	}
 	public void setDefaultEmailTemplateDto(DefaultEmailTemplateDto defaultEmailTemplateDto) {
 		this.defaultEmailTemplateDto = defaultEmailTemplateDto;
+	}
+	public Connector getConnector() {
+		return connector;
+	}
+	public void setConnector(Connector connector) {
+		this.connector = connector;
 	}
 	
 	
