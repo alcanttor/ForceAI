@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.spi.MatchingStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -83,7 +82,11 @@ public class SiteRuleEntityService {
 	}
 
 	public List<SiteRule> getRules(Integer siteId) {
-		return siteRuleRepository.findBySiteId(siteId);
+		List<SiteRule> siteRules = siteRuleRepository.findBySiteId(siteId);
+		for (SiteRule siteRule : siteRules) {
+			siteRule.getRules();
+		}
+		return siteRules;
 	}
 
 }

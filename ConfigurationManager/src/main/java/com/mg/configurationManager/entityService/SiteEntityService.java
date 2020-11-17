@@ -47,4 +47,8 @@ public class SiteEntityService {
 	public void deleteRule(Integer id) {
 		ruleRepositor.deleteById(id);
 	}*/
+
+	public Site getSiteByToken(String siteToken) {
+		return siteRepositor.findBySiteTokenToken(siteToken);
+	}
 }

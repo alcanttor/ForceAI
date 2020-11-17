@@ -8,4 +8,5 @@ import com.mg.configurationManager.entity.Site;
 @Repository
 public interface SiteRepository extends JpaRepository<Site, Integer>{
 
+	public Site findBySiteTokenToken(String token);
 }

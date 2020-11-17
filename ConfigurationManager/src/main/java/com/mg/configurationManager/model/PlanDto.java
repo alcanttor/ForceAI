@@ -1,16 +1,12 @@
-package com.mg.configurationManager.entity;
+package com.mg.configurationManager.model;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.stereotype.Component;
 
-@Entity
-public class Plan {
+import com.mg.configurationManager.entity.PriceUnit;
 
-	@Id
-	@GeneratedValue
+@Component
+public class PlanDto {
+
 	private Integer id;
 	private String name;
 	private String description;
@@ -19,7 +15,6 @@ public class Plan {
 	private Integer ruleExecutionAllowed;
 	private Integer duration;
 	private Double price;
-	@Enumerated(EnumType.STRING)
 	private PriceUnit units;
 
 	public Integer getId() {
@@ -36,6 +31,14 @@ public class Plan {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Integer getSiteSharingAllowed() {
@@ -60,14 +63,6 @@ public class Plan {
 
 	public void setRuleExecutionAllowed(Integer ruleExecutionAllowed) {
 		this.ruleExecutionAllowed = ruleExecutionAllowed;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public Integer getDuration() {

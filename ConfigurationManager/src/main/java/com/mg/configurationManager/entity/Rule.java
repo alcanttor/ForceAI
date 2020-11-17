@@ -1,13 +1,10 @@
 package com.mg.configurationManager.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -24,8 +21,6 @@ public class Rule {
 	private String max;
 	@Enumerated(EnumType.STRING)
 	private RuleType ruleType;
-	@OneToMany
-	private List<SystemParameters> systemPameters;
 	public Integer getId() {
 		return id;
 	}
@@ -62,16 +57,11 @@ public class Rule {
 	public void setRuleType(RuleType ruleType) {
 		this.ruleType = ruleType;
 	}
-	public List<SystemParameters> getSystemPameters() {
-		return systemPameters;
-	}
-	public void setSystemPameters(List<SystemParameters> systemPameters) {
-		this.systemPameters = systemPameters;
-	}
+	
 	@Override
 	public String toString() {
 		return "Rule [id=" + id + ", parameter=" + parameter + ", operation=" + operation + ", min=" + min + ", max="
-				+ max + ", ruleType=" + ruleType + ", systemPameters=" + systemPameters + "]";
+				+ max + ", ruleType=" + ruleType + "]";
 	}
 	
 	

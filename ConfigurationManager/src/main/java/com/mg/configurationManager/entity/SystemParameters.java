@@ -33,6 +33,10 @@ public class SystemParameters {
 	public void setDataType(DataType dataType) {
 		this.dataType = dataType;
 	}
+	@Override
+	public String toString() {
+		return "SystemParameters [id=" + id + ", name=" + name + ", dataType=" + dataType + "]";
+	}
 	
 	
 }

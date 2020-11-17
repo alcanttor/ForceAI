@@ -1,10 +1,10 @@
 insert into User (id,Username, password) values(1,'varun','varun');
 insert into User (id,Username, password) values(2,'charan','charan');
 
-insert into plan (id,name,description,rule_creation_allowed,rule_execution_allowed,site_sharing_allowed) values(1,'Free','something free to test',10,10,1);
-insert into plan (id,name,description,rule_creation_allowed,rule_execution_allowed,site_sharing_allowed) values(2,'Bronze','Single site',100,100,1);
-insert into plan (id,name,description,rule_creation_allowed,rule_execution_allowed,site_sharing_allowed) values(3,'Silver','Multi Site Sharing',100,100,10);
-insert into plan (id,name,description,rule_creation_allowed,rule_execution_allowed,site_sharing_allowed) values(4,'Gold','Super sharing and multi rules',1000,1000,100);
+insert into plan (id,name,description,rule_creation_allowed,rule_execution_allowed,site_sharing_allowed,duration,price,units) values(1,'Free','something free to test',10,10,1,90,0,'INR');
+insert into plan (id,name,description,rule_creation_allowed,rule_execution_allowed,site_sharing_allowed,duration,price,units) values(2,'Bronze','Single site',100,100,1,null,100,'INR');
+insert into plan (id,name,description,rule_creation_allowed,rule_execution_allowed,site_sharing_allowed,duration,price,units) values(3,'Silver','Multi Site Sharing',100,100,10,null,200,'INR');
+insert into plan (id,name,description,rule_creation_allowed,rule_execution_allowed,site_sharing_allowed,duration,price,units) values(4,'Gold','Super sharing and multi rules',1000,1000,100,null,300,'INR');
 
 insert into action (id,name) values (1,'Email to User');
 insert into action (id,name) values (2,'Email to Wish list User');

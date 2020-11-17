@@ -7,7 +7,7 @@ import com.mg.configurationManager.model.SiteRuleDto;
 
 public interface SiteRuleService {
 	public SiteRuleDto addRule(SiteRuleDto siteRuleDto);
-	public SiteRuleDto addRule(CreateSiteRuleDtoInput siteRuleDto);
+	public CreateSiteRuleDtoInput addRule(CreateSiteRuleDtoInput siteRuleDto);
 	public void deleteSiteRulebysiteRuleId(Integer siteRuleId);
 	public List<SiteRuleDto> getRules(Integer siteId);
 	public SiteRuleDto updateRule(CreateSiteRuleDtoInput siteRuleDto); // update only name and description

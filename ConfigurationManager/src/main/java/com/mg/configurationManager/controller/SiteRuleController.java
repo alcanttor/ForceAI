@@ -29,7 +29,7 @@ public class SiteRuleController {
 	}
 
 	@PostMapping(value = "/SiteRule")
-	public SiteRuleDto addSiteRules(@RequestBody CreateSiteRuleDtoInput siteRuleDto) {
+	public CreateSiteRuleDtoInput addSiteRules(@RequestBody CreateSiteRuleDtoInput siteRuleDto) {
 		logger.info("from controller ......................"+siteRuleDto);
 		return siteRuleService.addRule(siteRuleDto);
 	}

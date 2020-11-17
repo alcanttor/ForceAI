@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import com.mg.configurationManager.exceptions.CreationFailureException;
 import com.mg.configurationManager.exceptions.DeletionFailureException;
 import com.mg.configurationManager.exceptions.NoElementFoundException;
+import com.mg.configurationManager.exceptions.SiteLimitConsumedException;
 import com.mg.configurationManager.exceptions.UpdationFailureException;
 
 @ControllerAdvice
@@ -66,4 +67,17 @@ public class ControllerAdvisor extends ResponseEntityExceptionHandler {
 
 		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
 	}
+
+	@ExceptionHandler(SiteLimitConsumedException.class)
+	public ResponseEntity<Object> handleSiteLimitConsumedException(
+
+			SiteLimitConsumedException ex, WebRequest request) {
+
+		Map<String, Object> body = new LinkedHashMap<>();
+		body.put("timestamp", LocalDateTime.now());
+		body.put("message", ex.getMessage());
+
+		return new ResponseEntity<>(body, HttpStatus.NOT_FOUND);
+	}
+
 }

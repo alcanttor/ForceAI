@@ -1,7 +1,5 @@
 package com.mg.configurationManager.model;
 
-import java.util.List;
-
 import org.springframework.stereotype.Component;
 
 import com.mg.configurationManager.entity.Operation;
@@ -16,7 +14,6 @@ public class RuleDto {
 	private String min;
 	private String max;
 	private RuleType ruleType;
-	private List<SystemParametersDto> systemPametersDto;
 
 	public Integer getId() {
 		return id;
@@ -66,11 +63,4 @@ public class RuleDto {
 		this.ruleType = ruleType;
 	}
 
-	public List<SystemParametersDto> getSystemPametersDto() {
-		return systemPametersDto;
-	}
-
-	public void setSystemPametersDto(List<SystemParametersDto> systemPametersDto) {
-		this.systemPametersDto = systemPametersDto;
-	}
 }

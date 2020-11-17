@@ -2,6 +2,7 @@ package com.mg.configurationManager.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -22,7 +23,7 @@ public class Site {
 	private User user;
 	@Enumerated(EnumType.STRING)
 	private Connector connector;
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	private SiteToken siteToken;
 	@OneToMany(mappedBy = "site")
 	private List<SiteRule> siteRules;
