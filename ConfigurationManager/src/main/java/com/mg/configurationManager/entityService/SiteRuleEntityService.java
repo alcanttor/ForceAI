@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import com.google.gson.reflect.TypeToken;
 import com.mg.configurationManager.entity.AvailableRule;
+import com.mg.configurationManager.entity.Event;
 import com.mg.configurationManager.entity.FixRule;
 import com.mg.configurationManager.entity.Rule;
 import com.mg.configurationManager.entity.Site;
@@ -85,6 +86,15 @@ public class SiteRuleEntityService {
 		List<SiteRule> siteRules = siteRuleRepository.findBySiteId(siteId);
 		for (SiteRule siteRule : siteRules) {
 			siteRule.getRules();
+		}
+		return siteRules;
+	}
+
+	public List<SiteRule> getRules(Integer siteId, Event event) {
+		List<SiteRule> siteRules = siteRuleRepository.findBySiteIdAndEvent(siteId,event);
+		for (SiteRule siteRule : siteRules) {
+			siteRule.getRules();
+			siteRule.getAvailableRule().getDefaultEmailTemplate();
 		}
 		return siteRules;
 	}

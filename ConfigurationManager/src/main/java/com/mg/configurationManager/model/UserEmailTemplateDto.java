@@ -47,4 +47,11 @@ public class UserEmailTemplateDto {
 	public void setBody(String body) {
 		this.body = body;
 	}
+	@Override
+	public String toString() {
+		return "UserEmailTemplateDto [Id=" + Id + ", userDto=" + userDto + ", availableRuleDto=" + availableRuleDto
+				+ ", templateName=" + templateName + ", subject=" + subject + ", body=" + body + "]";
+	}
+	
+	
 }

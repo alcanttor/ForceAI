@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.mg.configurationManager.Service.SiteRuleService;
 import com.mg.configurationManager.Service.SiteService;
 import com.mg.configurationManager.model.HoaderData;
-import com.mg.configurationManager.model.RuleDto;
 import com.mg.configurationManager.model.SiteDto;
 import com.mg.configurationManager.model.SiteRuleDto;
 
@@ -16,19 +15,25 @@ import com.mg.configurationManager.model.SiteRuleDto;
 public class RuleEngine {
 
 	@Autowired
-	RuleSolver ruleSolver;
+	private ForceAIprocessor forceAIprocessor;
 	@Autowired
-	SiteRuleService siteRuleService;
+	private SiteRuleService siteRuleService;
 	@Autowired
-	SiteService siteService;
+	private SiteService siteService;
+	@Autowired
+	
 	public void processEvent(HoaderData hoaderData)
 	{
 		SiteDto siteDto =siteService.getSiteByToken(hoaderData.getSiteToken());
 		System.out.println("Site id found ["+siteDto.getId()+"]");
-		List<SiteRuleDto> siteRuleDto = siteRuleService.getRules(siteDto.getId());
+		List<SiteRuleDto> siteRuleDto = siteRuleService.getRules(siteDto.getId(),hoaderData.getEvent());
 		System.out.println("Site rules for site ["+siteDto.getId()+"] size ["+siteRuleDto.size()+"]");
-		List<RuleDto> rules = siteRuleDto.get(0).getRulesDto();
-		Boolean result = ruleSolver.solve(rules, hoaderData);
-		System.out.println("Result of the rule is  : "+result);
+		for (SiteRuleDto siteRuleDto2 : siteRuleDto) {
+			System.out.println("Siterule data........"+siteRuleDto2.getDefaultEmailTemplateDto());
+			System.out.println("Siterule data........"+siteRuleDto2.getDefaultEmailTemplateDto().getId());
+			System.out.println("Siterule data........"+siteRuleDto2.getDefaultEmailTemplateDto().getBody());
+			forceAIprocessor.processEventAndAct(siteRuleDto2,hoaderData);
+		}
+		
 	}
 }

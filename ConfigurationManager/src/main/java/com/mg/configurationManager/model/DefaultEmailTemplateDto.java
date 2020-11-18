@@ -33,6 +33,10 @@ public class DefaultEmailTemplateDto {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Override
+	public String toString() {
+		return "DefaultEmailTemplateDto [id=" + id + ", body=" + body + ", subject=" + subject + ", name=" + name + "]";
+	}
 	
 	
 }

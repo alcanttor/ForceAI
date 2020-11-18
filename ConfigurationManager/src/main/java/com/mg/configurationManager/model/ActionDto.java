@@ -19,6 +19,10 @@ public class ActionDto {
 	public void setName(String name) {
 		this.name = name;
 	}
+	@Override
+	public String toString() {
+		return "ActionDto [id=" + id + ", name=" + name + "]";
+	}
 	
 	
 }

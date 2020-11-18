@@ -4,6 +4,8 @@ import java.lang.reflect.Type;
 import java.util.List;
 
 import org.modelmapper.ModelMapper;
+import org.modelmapper.convention.MatchingStrategies;
+import org.modelmapper.spi.MatchingStrategy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +14,10 @@ import org.springframework.stereotype.Service;
 import com.google.gson.reflect.TypeToken;
 import com.mg.configurationManager.Service.SiteRuleService;
 import com.mg.configurationManager.Service.SubscriptionService;
+import com.mg.configurationManager.entity.Event;
 import com.mg.configurationManager.entity.SiteRule;
 import com.mg.configurationManager.entityService.SiteRuleEntityService;
 import com.mg.configurationManager.exceptions.SiteLimitConsumedException;
-import com.mg.configurationManager.model.AvailableRuleDto;
 import com.mg.configurationManager.model.CreateSiteRuleDtoInput;
 import com.mg.configurationManager.model.SiteRuleDto;
 import com.mg.configurationManager.model.UserSubscriptionDto;
@@ -39,6 +41,7 @@ public class SiteRuleServiceImpl implements SiteRuleService {
 				.getSubscriptionDetailsByUserId(siteRuleDto.getSiteDto().getUser().getId());
 		if (userSubscriptionDto.getRuleCreationAvailable() > 0) {
 			SiteRule siteRule = new SiteRule();
+			modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STANDARD);
 			modelMapper.map(siteRuleDto, siteRule);
 			SiteRule savedSiteRule = siteRuleEntityService.addRule(siteRule);
 			modelMapper.map(savedSiteRule, siteRuleDto);
@@ -73,6 +76,18 @@ public class SiteRuleServiceImpl implements SiteRuleService {
 	public SiteRuleDto updateRule(CreateSiteRuleDtoInput siteRuleDto) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<SiteRuleDto> getRules(Integer siteId, Event event) {
+		List<SiteRule> siteRules = siteRuleEntityService.getRules(siteId,event);
+		System.out.println("size of the rule list "+siteRules.size());
+		//System.out.println("test print..."+siteRules.get(0).getAvailableRule().getDefaultEmailTemplate().getId());
+		Type siteRulesDtosTemp = new TypeToken<List<SiteRuleDto>>() {}.getType();
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+		List<SiteRuleDto> siteRulesDto = modelMapper.map(siteRules,siteRulesDtosTemp);
+		//System.out.println("test print..."+siteRulesDto.get(0).getAvailableRuleDto().getDefaultEmailTemplateDto().getId());
+		return siteRulesDto;
 	}
 
 }

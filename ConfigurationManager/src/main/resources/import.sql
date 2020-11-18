@@ -52,7 +52,7 @@ insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(15,15,
 insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(16,21,'GREATER_THAN',null,null,'DYNAMIC'); 
 insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(17,20,'GREATER_THAN',null,null,'DYNAMIC'); 
 
-insert into default_email_template (id,name,subject,body) values(1,'Role Changed from Admin','Role Changed from Admin','Dear ${UserName}, Your role has been changed from ${previousRole} to ${newRole}. Thankyou.');
+insert into default_email_template (id,name,subject,body) values(1,'Role Changed from Admin','Role Changed from Admin','Dear {UserName}, Your role has been changed from {previousRole} to {newRole}. Thankyou.');
 
 
 insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(1,'Role Changed from Admin','ROLE_CHANGE','1',1,'WORDPRESS');
