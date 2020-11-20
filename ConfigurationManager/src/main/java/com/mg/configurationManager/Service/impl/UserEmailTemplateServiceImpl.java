@@ -8,9 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.reflect.TypeToken;
+import com.mg.configurationManager.Service.AvailableRuleService;
 import com.mg.configurationManager.Service.UserEmailTemplateService;
+import com.mg.configurationManager.entity.AvailableRule;
+import com.mg.configurationManager.entity.User;
 import com.mg.configurationManager.entity.UserEmailTemplate;
+import com.mg.configurationManager.entityService.AvailableRuleEntityService;
 import com.mg.configurationManager.entityService.UserEmailTemplateEntityService;
+import com.mg.configurationManager.entityService.UserEntityService;
+import com.mg.configurationManager.model.AvailableRuleDto;
+import com.mg.configurationManager.model.UserDto;
 import com.mg.configurationManager.model.UserEmailTemplateDto;
 
 @Service
@@ -18,6 +25,12 @@ public class UserEmailTemplateServiceImpl implements UserEmailTemplateService{
 
 	@Autowired
 	private UserEmailTemplateEntityService userEmailTemplateEntityService;
+	
+	@Autowired
+	private AvailableRuleEntityService availableRuleEntityService;
+	
+	@Autowired
+	private UserEntityService userEntityService;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -34,6 +47,11 @@ public class UserEmailTemplateServiceImpl implements UserEmailTemplateService{
 	public UserEmailTemplateDto createEmailTemplate(UserEmailTemplateDto userEmailTemplateDto) {
 		UserEmailTemplate userEmailTemplate = new UserEmailTemplate();
 		modelMapper.map(userEmailTemplateDto,userEmailTemplate);
+		System.out.println("saving email template : "+userEmailTemplate);
+		User user = userEntityService.getUserById(userEmailTemplateDto.getUserDto().getId());
+		AvailableRule availableRule = availableRuleEntityService.getAvailableRuleById(userEmailTemplateDto.getAvailableRuleDto().getId()).get();
+		userEmailTemplate.setUser(user);
+		userEmailTemplate.setAvailableRule(availableRule);
 		userEmailTemplate = userEmailTemplateEntityService.createEmailTemplate(userEmailTemplate);
 		modelMapper.map(userEmailTemplate,userEmailTemplateDto);
 		return userEmailTemplateDto;

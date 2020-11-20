@@ -44,4 +44,12 @@ public class AvailableRuleServiceImpl implements AvailableRuleService{
 		return allRules;
 	}
 
+	@Override
+	public AvailableRuleDto getAvailableRuleById(Integer id) {
+		AvailableRule availableRule = availableRuleEntityService.getAvailableRuleById(id).get();
+		AvailableRuleDto availableRuleDto = new AvailableRuleDto();
+		modelMapper.map(availableRule,availableRuleDto);
+		return availableRuleDto;
+	}
+
 }

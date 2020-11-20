@@ -18,7 +18,7 @@ public class SiteRuleDto {
 	private String ruleExpression;
 	private AvailableRuleDto availableRuleDto;
 	private UserEmailTemplateDto UserEmailTemplateDto;
-	private DefaultEmailTemplateDto defaultEmailTemplateDto;
+	//private DefaultEmailTemplateDto defaultEmailTemplateDto;
 
 	public Integer getId() {
 		return id;
@@ -92,12 +92,5 @@ public class SiteRuleDto {
 		UserEmailTemplateDto = userEmailTemplateDto;
 	}
 
-	public DefaultEmailTemplateDto getDefaultEmailTemplateDto() {
-		return defaultEmailTemplateDto;
-	}
-
-	public void setDefaultEmailTemplateDto(DefaultEmailTemplateDto defaultEmailTemplateDto) {
-		this.defaultEmailTemplateDto = defaultEmailTemplateDto;
-	}
 
 }

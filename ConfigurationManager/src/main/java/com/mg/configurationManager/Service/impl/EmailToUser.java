@@ -23,9 +23,9 @@ public class EmailToUser implements ActionService {
 		EmailData emailData = new EmailData();
 System.out.println("step on : "+defaultEmailTemplateDto);
 System.out.println("step on : "+userEmailTemplateDto);
-		if (userEmailTemplateDto != null) {
+		if (userEmailTemplateDto.getId() != null) {
 			emailData.setSubject(userEmailTemplateDto.getSubject());
-			emailData.setText(formEmailBody(hoaderData,defaultEmailTemplateDto.getBody()));
+			emailData.setText(formEmailBody(hoaderData,userEmailTemplateDto.getBody()));
 			emailData.setTo(hoaderData.getDataMap().get("UserEmail"));
 		} else {
 			emailData.setSubject(defaultEmailTemplateDto.getSubject());

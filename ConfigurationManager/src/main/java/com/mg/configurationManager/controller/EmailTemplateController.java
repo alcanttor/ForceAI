@@ -28,13 +28,13 @@ public class EmailTemplateController {
 	}
 	
 	@GetMapping(value = "/EmailTemplateService/{userId}/{availableRuleId}")
-	public List<UserEmailTemplateDto> getEmailTemplateById(@PathVariable Integer userId, @PathVariable Integer availableRuleId)
+	public List<UserEmailTemplateDto> getEmailTemplateByUserIdAndAvailableRule(@PathVariable Integer userId, @PathVariable Integer availableRuleId)
 	{
 		return emailTemplateService.getEmailTemplateByIdUserAndAvailableRule(userId, availableRuleId);
 	}
 	
 	@PostMapping(value = "/EmailTemplateService")
-	public UserEmailTemplateDto createEmailTemplateById(@RequestBody UserEmailTemplateDto userEmailTemplateDto)
+	public UserEmailTemplateDto createEmailTemplate(@RequestBody UserEmailTemplateDto userEmailTemplateDto)
 	{
 		return emailTemplateService.createEmailTemplate(userEmailTemplateDto);
 	}
@@ -52,9 +52,8 @@ public class EmailTemplateController {
 	}
 	
 	@DeleteMapping(value = "/EmailTemplateService/{id}")
-	public UserEmailTemplateDto deleteEmailTemplateById(@PathVariable Integer id)
+	public void deleteEmailTemplateById(@PathVariable Integer id)
 	{
 		emailTemplateService.deleteEmailTemplate(id);
-		return null;
 	}
 	}

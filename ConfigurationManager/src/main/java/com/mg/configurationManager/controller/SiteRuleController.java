@@ -25,7 +25,7 @@ public class SiteRuleController {
 	
 	@GetMapping(value = "/SiteRule/{siteId}")
 	public List<SiteRuleDto> getSiteRules(@PathVariable(name = "siteId") Integer siteId) {
-		return null;
+		return siteRuleService.getRules(siteId);
 	}
 
 	@PostMapping(value = "/SiteRule")

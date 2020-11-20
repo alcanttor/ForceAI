@@ -9,4 +9,5 @@ public interface AvailableRuleService {
 
 	public List<AvailableRuleDto> getAllAvailableRules();
 	public List<AvailableRuleDto> getAllAvailableRulesByConnetors(Connector connector);
+	public AvailableRuleDto getAvailableRuleById(Integer id);
 }

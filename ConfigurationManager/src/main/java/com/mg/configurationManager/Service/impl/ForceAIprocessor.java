@@ -44,11 +44,11 @@ public class ForceAIprocessor {
 		}
 		List<ActionDto> actions = siteRuleDto.getActionsDto();
 		System.out.println("action found for the Site ["+siteRuleDto.getId()+"] and event ["+hoaderData.getEvent()+"] size ["+actions.size()+"]");
-		System.out.println("default email template : "+siteRuleDto.getDefaultEmailTemplateDto());
+		System.out.println("default email template : "+siteRuleDto.getAvailableRuleDto().getDefaultEmailTemplateDto());
 		for (ActionDto actionDto : actions) {
 			System.out.println("Actions.... "+actionDto);
 			
-			forceAIActionService.doAction(actionDto,hoaderData,siteRuleDto.getDefaultEmailTemplateDto(),siteRuleDto.getUserEmailTemplateDto());
+			forceAIActionService.doAction(actionDto,hoaderData,siteRuleDto.getAvailableRuleDto().getDefaultEmailTemplateDto(),siteRuleDto.getUserEmailTemplateDto());
 		}
 	}
 

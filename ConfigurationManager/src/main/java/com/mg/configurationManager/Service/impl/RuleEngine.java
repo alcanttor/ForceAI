@@ -29,9 +29,9 @@ public class RuleEngine {
 		List<SiteRuleDto> siteRuleDto = siteRuleService.getRules(siteDto.getId(),hoaderData.getEvent());
 		System.out.println("Site rules for site ["+siteDto.getId()+"] size ["+siteRuleDto.size()+"]");
 		for (SiteRuleDto siteRuleDto2 : siteRuleDto) {
-			System.out.println("Siterule data........"+siteRuleDto2.getDefaultEmailTemplateDto());
-			System.out.println("Siterule data........"+siteRuleDto2.getDefaultEmailTemplateDto().getId());
-			System.out.println("Siterule data........"+siteRuleDto2.getDefaultEmailTemplateDto().getBody());
+			System.out.println("Siterule data........"+siteRuleDto2.getAvailableRuleDto().getDefaultEmailTemplateDto());
+			System.out.println("Siterule data........"+siteRuleDto2.getAvailableRuleDto().getDefaultEmailTemplateDto().getId());
+			System.out.println("Siterule data........"+siteRuleDto2.getAvailableRuleDto().getDefaultEmailTemplateDto().getBody());
 			forceAIprocessor.processEventAndAct(siteRuleDto2,hoaderData);
 		}
 		

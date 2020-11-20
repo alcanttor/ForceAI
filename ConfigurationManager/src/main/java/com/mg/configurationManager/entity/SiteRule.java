@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -37,8 +36,8 @@ public class SiteRule {
 	private AvailableRule availableRule;
 	@OneToOne
 	private UserEmailTemplate UserEmailTemplate;
-	@OneToOne
-	private DefaultEmailTemplate defaultEmailTemplate; // this may not required. can fetch from available rule
+	//@OneToOne
+	//private DefaultEmailTemplate defaultEmailTemplate; // this may not required. can fetch from available rule
 	public Integer getId() {
 		return id;
 	}
@@ -93,12 +92,7 @@ public class SiteRule {
 	public void setUserEmailTemplate(UserEmailTemplate UserEmailTemplate) {
 		this.UserEmailTemplate = UserEmailTemplate;
 	}
-	public DefaultEmailTemplate getDefaultEmailTemplate() {
-		return defaultEmailTemplate;
-	}
-	public void setDefaultEmailTemplate(DefaultEmailTemplate defaultEmailTemplate) {
-		this.defaultEmailTemplate = defaultEmailTemplate;
-	}
+	
 	public Site getSite() {
 		return site;
 	}
@@ -110,7 +104,7 @@ public class SiteRule {
 		return "SiteRule [id=" + id + ", name=" + name + ", description=" + description + ", rules=" + rules
 				+ ", event=" + event + ", actions=" + actions + ", ruleExpression=" + ruleExpression + ", site=" + site
 				+ ", availableRule=" + availableRule + ", UserEmailTemplate=" + UserEmailTemplate
-				+ ", defaultEmailTemplate=" + defaultEmailTemplate + "]";
+				 + "]";
 	}
 	
 	
