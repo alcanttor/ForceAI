@@ -20,7 +20,6 @@ public class RuleEngine {
 	private SiteRuleService siteRuleService;
 	@Autowired
 	private SiteService siteService;
-	@Autowired
 	
 	public void processEvent(HoaderData hoaderData)
 	{
