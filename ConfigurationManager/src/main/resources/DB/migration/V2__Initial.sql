@@ -27,7 +27,7 @@ insert into system_parameters (id,name,data_type) values (13,'productName','STRI
 insert into system_parameters (id,name,data_type) values (14,'oldInventoryCount','DOUBLE');
 insert into system_parameters (id,name,data_type) values (15,'newInventoryCount','DOUBLE');
 insert into system_parameters (id,name,data_type) values (16,'priceUpdate','STRING');
-insert into system_parameters (id,name,data_type) values (17,'inventoryUpdate','STRING');
+
 insert into system_parameters (id,name,data_type) values (18,'UserType','STRING');
 insert into system_parameters (id,name,data_type) values (19,'paymentAmount','DOUBLE');
 insert into system_parameters (id,name,data_type) values (20,'revenuAmount','DOUBLE');
@@ -51,9 +51,10 @@ insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(14,16,
 insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(15,15,'LESS_THAN',null,null,'DYNAMIC'); 
 insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(16,21,'GREATER_THAN',null,null,'DYNAMIC'); 
 insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(17,20,'GREATER_THAN',null,null,'DYNAMIC'); 
+insert into fix_rule (id,parameter_id,operation,min,max,rule_type) values(18,13,'EQUAL',null,null,'DYNAMIC'); 
 
 insert into default_email_template (id,name,subject,body) values(1,'Role Changed from Admin','Role Changed from Admin','Dear {UserName}, Your role has been changed from {previousRole} to {newRole}. Thankyou.');
-
+insert into default_email_template values (2,'Dear User\nThe product {productName} is getting sold very fast. Get it before stock lasts.\n Thanks','Email to whish list for invtory Update','Product selling fast');
 
 insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(1,'Role Changed from Admin','ROLE_CHANGE','1',1,'WORDPRESS');
 insert into available_rule_actions(available_rule_id,actions_id) values(1,1);
@@ -110,8 +111,9 @@ insert into available_rule (id,name,event,rule_expression,default_email_template
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(13,14);
 insert into available_rule_actions(available_rule_id,actions_id) values(13,1);
 
-insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(14,'Wishlisted Product only x left','INVETORY_CHANGE','16',1,'WORDPRESS');
+insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(14,'Wishlisted Product only x left','INVETORY_CHANGE','15&&18',2,'WORDPRESS');
 insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(14,15);
+insert into available_rule_fix_rules (available_rule_id,fix_rules_id) values(14,18);
 insert into available_rule_actions(available_rule_id,actions_id) values(14,2);
 
 insert into available_rule (id,name,event,rule_expression,default_email_template_id,connector) values(15,'Email Users above x purchase (revenue)','PAYMENT','17',1,'WORDPRESS');

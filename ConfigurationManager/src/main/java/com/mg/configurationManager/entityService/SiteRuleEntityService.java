@@ -43,8 +43,29 @@ public class SiteRuleEntityService {
 	@Autowired
 	private SiteEntityService siteEntityService;
 	
+	
 	@Transactional
 	public SiteRule addRule(SiteRule siteRule) {
+		List<Rule> ruleSaves = ruleEntityService.createRule(siteRule.getRules());
+		List<FixRule> fixRules = siteRule.getAvailableRule().getFixRules();
+		String expressionTemplate = siteRule.getAvailableRule().getRuleExpression();
+		int index = 0;
+		for (FixRule fixRule : fixRules) {
+			expressionTemplate = expressionTemplate.replaceAll("" + fixRule.getId(), "" + ruleSaves.get(index).getId());
+			index++;
+		}
+//		Site site = siteEntityService.getSiteById(siteRule.getSite().getId());
+		siteRule.setRules(ruleSaves);
+		siteRule.setRuleExpression(expressionTemplate);
+		//siteRule.setSite(site);
+		//siteRule.setEvent(availableRule.getEvent());
+		//String expressionTemplate = availableRule.getRuleExpression();
+		return siteRuleRepository.save(siteRule);
+	}
+	
+
+	@Transactional
+	public SiteRule addRuleOld(SiteRule siteRule) {
 		Optional<AvailableRule> availableRuleOptional = availableRuleEntityService.getAvailableRuleById(siteRule.getAvailableRule().getId());
 		AvailableRule availableRule = null;
 		if(availableRuleOptional.isPresent())
@@ -76,7 +97,7 @@ public class SiteRuleEntityService {
 		//enable trigger on plugin
 		return siteRuleRepository.save(siteRule);
 	}
-
+	
 	public void deleteSiteRulebysiteRuleId(Integer siteRuleId) {
 		// TODO Auto-generated method stub
 		

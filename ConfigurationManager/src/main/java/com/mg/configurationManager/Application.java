@@ -11,6 +11,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableWebSecurity
 @EnableSwagger2
 @EnableAsync
+//@EnableDiscoveryClient
 //@EnableJpaAuditing(auditorAwareRef = "auditorAware")
 public class Application {
 

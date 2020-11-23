@@ -35,6 +35,14 @@ public class RuleSolver {
 			{
 				return (rule.getMin() == (hoaderData.getDataMap().get(rule.getSystemParameterDto().getName())));
 			}
+		case LESS_THAN:
+			
+				return (Double.parseDouble((hoaderData.getDataMap().get(rule.getSystemParameterDto().getName()))) < Double.parseDouble(rule.getMin()));
+			
+		case GREATER_THAN:
+			
+			return (Double.parseDouble((hoaderData.getDataMap().get(rule.getSystemParameterDto().getName()))) > Double.parseDouble(rule.getMin()));
+	
 		default:
 			return false;
 		}

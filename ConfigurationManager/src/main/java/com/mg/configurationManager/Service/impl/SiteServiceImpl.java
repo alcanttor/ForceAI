@@ -69,8 +69,10 @@ public class SiteServiceImpl implements SiteService{
 
 	@Override
 	public SiteDto getSitesById(Integer siteId) {
-		// TODO Auto-generated method stub
-		return null;
+		SiteDto siteDto = new SiteDto();
+		Site site = siteEntityService.getSiteById(siteId);
+		modelMapper.map(site,siteDto);
+		return siteDto;
 	}
 
 	@Override

@@ -12,6 +12,7 @@ public class CreateSiteRuleDtoInput {
 	private List<ActionDto> actionsDto;
 	private AvailableRuleDto availableRuleDto;
 	private SiteDto siteDto;
+	private List<RuleDto> ruleDtos;
 	private UserEmailTemplateDto userEmailTemplateDto;
 	public String getName() {
 		return name;
@@ -50,6 +51,14 @@ public class CreateSiteRuleDtoInput {
 	}
 	public void setUserEmailTemplateDto(UserEmailTemplateDto userEmailTemplateDto) {
 		this.userEmailTemplateDto = userEmailTemplateDto;
+	}
+	
+	
+	public List<RuleDto> getRuleDtos() {
+		return ruleDtos;
+	}
+	public void setRuleDtos(List<RuleDto> ruleDtos) {
+		this.ruleDtos = ruleDtos;
 	}
 	@Override
 	public String toString() {
