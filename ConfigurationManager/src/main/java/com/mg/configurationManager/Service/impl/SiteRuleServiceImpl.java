@@ -113,6 +113,7 @@ public class SiteRuleServiceImpl implements SiteRuleService {
 		List<SiteRule> siteRules = siteRuleEntityService.getRules(siteId);
 		Type siteRulesDtosTemp = new TypeToken<List<SiteRuleDto>>() {
 		}.getType();
+		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 		List<SiteRuleDto> siteRulesDto = modelMapper.map(siteRules, siteRulesDtosTemp);
 		return siteRulesDto;
 	}

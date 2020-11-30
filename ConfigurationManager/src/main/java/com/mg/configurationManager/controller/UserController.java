@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mg.configurationManager.Service.SiteService;
 import com.mg.configurationManager.Service.impl.JwtService;
 import com.mg.configurationManager.Service.impl.UserService;
 import com.mg.configurationManager.entity.User;
 import com.mg.configurationManager.model.AuthorizationTokenResponse;
+import com.mg.configurationManager.model.SiteDto;
 import com.mg.configurationManager.model.UserDto;
 
 
@@ -34,6 +36,8 @@ public class UserController {
 	@Autowired
 	private UserDetailsService userDetailsService;
 	
+	@Autowired
+	private SiteService siteService;
 	
 	@GetMapping(value = "/User/{id}")
 	public UserDto getUserById(@PathVariable Integer id)
@@ -76,6 +80,24 @@ public class UserController {
 		catch (BadCredentialsException e) {
 			throw new Exception("Incorrect username or password", e);
 		}
+		User userDetails = (User) userDetailsService.loadUserByUsername(user);
+		String jwt = jwtService.generateToken(userDetails);
+		AuthorizationTokenResponse response = new AuthorizationTokenResponse();
+		response.setJwt(jwt);
+		response.setUserId(userDetails.getId());
+		return response;
+	}
+	
+	@GetMapping(value = "/tokenBySiteId/{siteToken}")
+	public AuthorizationTokenResponse getJwtToken(@PathVariable String siteToken) throws Exception {
+		SiteDto siteDto = null;
+		try {
+			siteDto = siteService.getSiteByToken(siteToken);
+		}
+		catch (BadCredentialsException e) {
+			throw new Exception("Incorrect username or password", e);
+		}
+		String user = siteDto.getUser().getUsername();
 		User userDetails = (User) userDetailsService.loadUserByUsername(user);
 		String jwt = jwtService.generateToken(userDetails);
 		AuthorizationTokenResponse response = new AuthorizationTokenResponse();
