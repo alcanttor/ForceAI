@@ -3,14 +3,13 @@ package com.mg.configurationManager.model;
 import org.springframework.stereotype.Component;
 
 import com.mg.configurationManager.entity.Connector;
-import com.mg.configurationManager.entity.User;
 
 @Component
 public class SiteDto {
 
 	private Integer id;
 	private String name;
-	private User user;
+	private UserDto userDto;
 	private Connector connector;
 	private SiteTokenDto siteTokenDto;
 	public Integer getId() {
@@ -25,11 +24,12 @@ public class SiteDto {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public User getUser() {
-		return user;
+	
+	public UserDto getUserDto() {
+		return userDto;
 	}
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserDto(UserDto userDto) {
+		this.userDto = userDto;
 	}
 	public Connector getConnector() {
 		return connector;

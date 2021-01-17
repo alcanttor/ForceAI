@@ -2,14 +2,11 @@ package com.mg.configurationManager.model;
 
 import java.sql.Timestamp;
 
-import javax.persistence.OneToOne;
-
 import com.mg.configurationManager.entity.SubscriptionStatus;
 
 public class UserSubscriptionDto {
 	private Integer id;
 	private PlanDto planDto;
-	@OneToOne
 	private UserDto userDto;
 	private Integer siteSharingAllowed;
 	private Integer ruleCreationAllowed;

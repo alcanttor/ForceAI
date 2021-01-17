@@ -1,5 +1,5 @@
-insert into User (id,Username, password) values(1,'varun','varun');
-insert into User (id,Username, password) values(2,'charan','charan');
+insert into user (id,Username, password) values(1,'varun','varun');
+insert into user (id,Username, password) values(2,'charan','charan');
 
 insert into plan (id,name,description,rule_creation_allowed,rule_execution_allowed,site_sharing_allowed,duration,price,units) values(1,'Free','something free to test',10,10,1,90,0,'INR');
 insert into plan (id,name,description,rule_creation_allowed,rule_execution_allowed,site_sharing_allowed,duration,price,units) values(2,'Bronze','Single site',100,100,1,null,100,'INR');

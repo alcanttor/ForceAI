@@ -52,7 +52,7 @@ public class SiteRuleServiceImpl implements SiteRuleService {
 	@Override
 	public CreateSiteRuleDtoInput addRule(CreateSiteRuleDtoInput siteRuleDto) {
 		UserSubscriptionDto userSubscriptionDto = subscriptionService
-				.getSubscriptionDetailsByUserId(siteRuleDto.getSiteDto().getUser().getId());
+				.getSubscriptionDetailsByUserId(siteRuleDto.getSiteDto().getUserDto().getId());
 		if (userSubscriptionDto.getRuleCreationAvailable() < 0)
 			throw new SiteLimitConsumedException();
 		SiteRule siteRule = new SiteRule();
@@ -82,7 +82,7 @@ public class SiteRuleServiceImpl implements SiteRuleService {
 		siteRule.setRuleExpression(expressionTemplate);
 		SiteRule savedSiteRule = siteRuleEntityService.addRule(siteRule);
 		modelMapper.map(savedSiteRule, siteRuleDto);
-		subscriptionService.consumeruleCreation(siteRuleDto.getSiteDto().getUser().getId());
+		subscriptionService.consumeruleCreation(siteRuleDto.getSiteDto().getUserDto().getId());
 		return siteRuleDto;
 
 	}

@@ -5,9 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
+
+import com.mg.configurationManager.entity.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -18,6 +22,9 @@ public class JwtService {
 
 	@Value("${JWT.SECRET_KEY}")
 	private String SECRET_KEY="123";
+	
+	@Autowired
+    private UserDetailsService userDetailsService;
 	
 	private long expiryTime = 1000 * 60 * 60 * 10;
 
@@ -62,4 +69,15 @@ public class JwtService {
         String Username = extractUsername(token);
         return (Username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
+    
+    public User validateToke(String token)
+    {
+    	String username = extractUsername(token);
+    	UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+    	if ((username.equals(userDetails.getUsername()) && !isTokenExpired(token)))
+    			return (User) userDetails;
+    	else
+    		return null;
+    }
+
 }

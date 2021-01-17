@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mg.configurationManager.Service.SiteRuleService;
+import com.mg.configurationManager.entity.Event;
 import com.mg.configurationManager.model.CreateSiteRuleDtoInput;
 import com.mg.configurationManager.model.SiteRuleDto;
 
@@ -32,5 +33,11 @@ public class SiteRuleController {
 	public CreateSiteRuleDtoInput addSiteRules(@RequestBody CreateSiteRuleDtoInput siteRuleDto) {
 		logger.info("from controller ......................"+siteRuleDto);
 		return siteRuleService.addRule(siteRuleDto);
+	}
+	
+	@GetMapping(value = "/SiteRuleByEvent/{siteId}/{event}")
+	public List<SiteRuleDto> getRulesByEvent(@PathVariable(name = "siteId") Integer siteId,@PathVariable(name = "event") Event event)
+	{
+	 return siteRuleService.getRules(siteId,  event);
 	}
 }

@@ -31,4 +31,9 @@ public class SiteController {
 	public SiteDto getSite(@PathVariable Integer siteId) {
 		return siteService.getSitesById(siteId);
 	}
+	@GetMapping("/siteByToken/{siteToken}")
+	public SiteDto getSiteByToken(@PathVariable String siteToken)
+	{
+		return siteService.getSiteByToken(siteToken);
+	}
 }

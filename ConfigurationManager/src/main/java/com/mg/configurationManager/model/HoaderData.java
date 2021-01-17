@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import com.mg.configurationManager.entity.Event;
-import com.sun.istack.NotNull;
 
 @Component
 @Scope("prototype")
@@ -15,7 +14,6 @@ public class HoaderData
 {
 	@Autowired
 	private Map<String, String> dataMap;
-	@NotNull
 	private Event event;
 	private String SiteToken;
 

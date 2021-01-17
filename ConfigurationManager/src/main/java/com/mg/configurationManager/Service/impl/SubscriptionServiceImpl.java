@@ -7,6 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mg.configurationManager.Service.SiteService;
 import com.mg.configurationManager.Service.SubscriptionService;
 import com.mg.configurationManager.entity.Plan;
 import com.mg.configurationManager.entity.SubscriptionStatus;
@@ -15,6 +16,7 @@ import com.mg.configurationManager.entity.UserSubscription;
 import com.mg.configurationManager.entityService.PlanEntityService;
 import com.mg.configurationManager.entityService.UserEntityService;
 import com.mg.configurationManager.entityService.UserSubscriptionEntityService;
+import com.mg.configurationManager.model.SiteDto;
 import com.mg.configurationManager.model.SubscriptionPlanData;
 import com.mg.configurationManager.model.SubscriptionResult;
 import com.mg.configurationManager.model.UserSubscriptionDto;
@@ -30,6 +32,8 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 	private PlanEntityService planEntityService; 
 	@Autowired
 	private ModelMapper modelMapper;
+	@Autowired
+	private SiteService siteService;
 	
 	@Override
 	public UserSubscriptionDto subscribeToPlan(Integer userId, SubscriptionPlanData subscriptionPlanData) {
@@ -113,4 +117,25 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 		userSubscriptionEntityService.updateUserSubscription(userSubscription);
 	}
 
+	@Override
+	public void consumeruleExecutionBySiteToken(String siteToken) {
+		SiteDto siteDto = siteService.getSiteByToken(siteToken);
+		UserSubscription userSubscription = userSubscriptionEntityService.getUserSubscriptionByUserId(siteDto.getUserDto().getId());
+		int siteRuleExecutionAvailable = userSubscription.getRuleExecutionAvailable();
+		int siteRuleExecutionConsumed = userSubscription.getRuleExecutionConsumed();
+		siteRuleExecutionAvailable--;
+		siteRuleExecutionConsumed++;
+		userSubscription.setRuleExecutionAvailable(siteRuleExecutionAvailable);
+		userSubscription.setSiteSharingConsumed(siteRuleExecutionConsumed);
+		userSubscriptionEntityService.updateUserSubscription(userSubscription);
+	}
+
+	@Override
+	public UserSubscriptionDto getSubscriptionData(String siteToken) {
+		SiteDto siteDto = siteService.getSiteByToken(siteToken);
+		UserSubscription userSubscription = userSubscriptionEntityService.getUserSubscriptionByUserId(siteDto.getUserDto().getId());
+		UserSubscriptionDto userSubscriptionDto = new UserSubscriptionDto();
+		modelMapper.map(userSubscription, userSubscriptionDto);
+		return userSubscriptionDto;
+	}
 }

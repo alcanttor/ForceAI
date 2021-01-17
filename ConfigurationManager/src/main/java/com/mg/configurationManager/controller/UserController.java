@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mg.configurationManager.Service.SiteService;
 import com.mg.configurationManager.Service.impl.JwtService;
+import com.mg.configurationManager.Service.impl.JwtValidatorService;
 import com.mg.configurationManager.Service.impl.UserService;
 import com.mg.configurationManager.entity.User;
 import com.mg.configurationManager.model.AuthorizationTokenResponse;
@@ -37,6 +39,9 @@ public class UserController {
 	private UserDetailsService userDetailsService;
 	
 	@Autowired
+	private JwtValidatorService jwtValidatorService;
+	
+	@Autowired
 	private SiteService siteService;
 	
 	@GetMapping(value = "/User/{id}")
@@ -45,8 +50,14 @@ public class UserController {
 		return userService.getUserById(id);
 	}
 	
+	@GetMapping(value = "/UserByName/{userName}")
+	public UserDto getUserByName(@PathVariable String userName)
+	{
+		return userService.getUserByName(userName);
+	}
+	
 	@PostMapping(value = "/User")
-	public UserDto getUserById(@RequestBody UserDto user)
+	public UserDto saveUser(@RequestBody UserDto user)
 	{
 		return userService.createUser(user);
 	}
@@ -57,7 +68,7 @@ public class UserController {
 		return userService.updateUser(user,false);
 	}
 	
-	@PostMapping(value = "/UserMege")
+	@PostMapping(value = "/UserMerge")
 	public UserDto mergeUserById(@RequestBody UserDto user)
 	{
 		return userService.updateUser(user,true);
@@ -97,12 +108,19 @@ public class UserController {
 		catch (BadCredentialsException e) {
 			throw new Exception("Incorrect username or password", e);
 		}
-		String user = siteDto.getUser().getUsername();
+		String user = siteDto.getUserDto().getUserName();
 		User userDetails = (User) userDetailsService.loadUserByUsername(user);
 		String jwt = jwtService.generateToken(userDetails);
 		AuthorizationTokenResponse response = new AuthorizationTokenResponse();
 		response.setJwt(jwt);
 		response.setUserId(userDetails.getId());
+		response.setSiteId(siteDto.getId());
 		return response;
+	}
+	
+	@PostMapping("/validateJwt")
+	public User validateJwt(@RequestBody String jwt)
+	{
+		return jwtService.validateToke(jwt);
 	}
 }

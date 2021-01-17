@@ -17,4 +17,8 @@ public interface SubscriptionService {
 	public void consumeruleCreation(Integer userId);
 	
 	public void consumeruleExecution(Integer userId);
+
+	void consumeruleExecutionBySiteToken(String siteToken);
+
+	UserSubscriptionDto getSubscriptionData(String siteToken);
 }
